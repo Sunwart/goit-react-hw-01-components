@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Sunwart.github.io/goit-react-hw-01-components/static/css/main.4ce84dbb.css",
+    "main.js": "/Sunwart.github.io/goit-react-hw-01-components/static/js/main.c0d160ac.js",
+    "index.html": "/Sunwart.github.io/goit-react-hw-01-components/index.html",
+    "main.4ce84dbb.css.map": "/Sunwart.github.io/goit-react-hw-01-components/static/css/main.4ce84dbb.css.map",
+    "main.c0d160ac.js.map": "/Sunwart.github.io/goit-react-hw-01-components/static/js/main.c0d160ac.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4ce84dbb.css",
+    "static/js/main.c0d160ac.js"
+  ]
+}
