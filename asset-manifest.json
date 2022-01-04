@@ -1,13 +1,11 @@
 {
   "files": {
-    "main.css": "/Sunwart.github.io/goit-react-hw-01-components/static/css/main.4ce84dbb.css",
-    "main.js": "/Sunwart.github.io/goit-react-hw-01-components/static/js/main.c0d160ac.js",
+    "main.js": "/Sunwart.github.io/goit-react-hw-01-components/static/js/main.13b23ebe.js",
+    "static/media/img.jfif": "/Sunwart.github.io/goit-react-hw-01-components/static/media/img.38762504caf4547ffd25.jfif",
     "index.html": "/Sunwart.github.io/goit-react-hw-01-components/index.html",
-    "main.4ce84dbb.css.map": "/Sunwart.github.io/goit-react-hw-01-components/static/css/main.4ce84dbb.css.map",
-    "main.c0d160ac.js.map": "/Sunwart.github.io/goit-react-hw-01-components/static/js/main.c0d160ac.js.map"
+    "main.13b23ebe.js.map": "/Sunwart.github.io/goit-react-hw-01-components/static/js/main.13b23ebe.js.map"
   },
   "entrypoints": [
-    "static/css/main.4ce84dbb.css",
-    "static/js/main.c0d160ac.js"
+    "static/js/main.13b23ebe.js"
   ]
 }
