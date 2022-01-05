@@ -41,7 +41,7 @@ export const Location = styled.p`
   margin-bottom: 32px;
 `;
 
-export const Stats = styled.ul`
+export const StatsContainer = styled.ul`
   display: flex;
   text-align: center;
 

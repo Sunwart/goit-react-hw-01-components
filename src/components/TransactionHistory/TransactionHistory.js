@@ -13,12 +13,12 @@ function TransactionHistory({ items }) {
         </tr>
       </thead>
       <tbody>
-        {items.map(elem => {
+        {items.map(({ id, type, amount, currency }) => {
           return (
-            <tr key={elem.id}>
-              <td>{elem.type}</td>
-              <td>{elem.amount}</td>
-              <td>{elem.currency}</td>
+            <tr key={id}>
+              <td>{type}</td>
+              <td>{amount}</td>
+              <td>{currency}</td>
             </tr>
           );
         })}
@@ -28,7 +28,14 @@ function TransactionHistory({ items }) {
 }
 
 TransactionHistory.propTypes = {
-  transactions: PropTypes.arrayOf(PropTypes.object),
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      type: PropTypes.string.isRequired,
+      amount: PropTypes.string.isRequired,
+      currency: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
 };
 
 export default TransactionHistory;

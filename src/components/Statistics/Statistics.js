@@ -12,13 +12,13 @@ import {
 function Statistics({ title, stats }) {
   return (
     <StatsContainer>
-      <StatsTitle>{title}</StatsTitle>
+      {title && <StatsTitle>{title}</StatsTitle>}
       <Stats>
-        {stats.map(elem => {
+        {stats.map(({ id, label, percentage }) => {
           return (
-            <StatsEntry key={elem.id}>
-              <StatsLabel>{elem.label}</StatsLabel>
-              <StatsValue>{elem.percentage}%</StatsValue>
+            <StatsEntry key={id}>
+              <StatsLabel>{label}</StatsLabel>
+              <StatsValue>{percentage}%</StatsValue>
             </StatsEntry>
           );
         })}
@@ -28,8 +28,14 @@ function Statistics({ title, stats }) {
 }
 
 Statistics.propTypes = {
-  title: PropTypes.string,
-  data: PropTypes.arrayOf(PropTypes.object),
+  title: PropTypes.string.isRequired,
+  stats: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+      percentage: PropTypes.number.isRequired,
+    }),
+  ).isRequired,
 };
 
 export default Statistics;

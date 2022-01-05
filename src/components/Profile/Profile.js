@@ -8,7 +8,7 @@ import {
   UserName,
   NickName,
   Location,
-  Stats,
+  StatsContainer,
   StatsLabel,
   StatsNumber,
 } from './Profile.styled';
@@ -29,7 +29,7 @@ function Profile({
         <Location>{location}</Location>
       </MainProfileInfo>
 
-      <Stats>
+      <StatsContainer>
         <li>
           <StatsLabel>Followers</StatsLabel>
           <StatsNumber>{followers}</StatsNumber>
@@ -42,19 +42,21 @@ function Profile({
           <StatsLabel>Likes</StatsLabel>
           <StatsNumber>{likes}</StatsNumber>
         </li>
-      </Stats>
+      </StatsContainer>
     </ProfileContainer>
   );
 }
 
 Profile.propTypes = {
-  avatar: PropTypes.string,
+  avatar: PropTypes.string.isRequired,
   username: PropTypes.string.isRequired,
-  tag: PropTypes.string,
-  location: PropTypes.string,
-  followers: PropTypes.number,
-  views: PropTypes.number,
-  likes: PropTypes.number,
+  tag: PropTypes.string.isRequired,
+  location: PropTypes.string.isRequired,
+  stats: PropTypes.shape({
+    followers: PropTypes.number.isRequired,
+    views: PropTypes.number.isRequired,
+    likes: PropTypes.number.isRequired,
+  }).isRequired,
 };
 
 export default Profile;
