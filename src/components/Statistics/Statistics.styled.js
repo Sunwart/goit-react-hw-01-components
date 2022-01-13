@@ -5,6 +5,9 @@ export const StatsContainer = styled.section`
   background-color: white;
   display: inline-flex;
   flex-direction: column;
+  box-shadow: ${({ theme }) => {
+    return theme.boxShadow.shadow;
+  }};
 `;
 
 export const StatsTitle = styled.h2`

@@ -12,9 +12,32 @@ import transactions from './components/data/transactions.json';
 
 import { Container } from './App.styled';
 
+import { Filter } from './components/Filter/Filter';
+
+import { ThemeProvider } from 'styled-components';
+import { theme } from './components/data/theme';
+
 export default function App() {
   return (
-    <>
+    <ThemeProvider theme={theme}>
+      <Filter
+        isOpen
+        searchable
+        options={[
+          { value: 'ff0000', label: 'red' },
+          { value: 'ff8000', label: 'orange' },
+          { value: 'ffff00', label: 'yellow' },
+          { value: '80ff00', label: 'chartreuse' },
+          { value: '00ff00', label: 'green' },
+          { value: '00ff80', label: 'spring green' },
+          { value: '00ffff', label: 'cyan' },
+          { value: '0080ff', label: 'dodger blue' },
+          { value: '0000ff', label: 'blue' },
+          { value: '8000ff', label: 'purple' },
+          { value: 'ff00ff', label: 'violet' },
+          { value: 'ff0080', label: 'magenta' },
+        ]}
+      />
       <Container>
         <Profile
           username={user.username}
@@ -29,6 +52,6 @@ export default function App() {
         <TransactionHistory items={transactions} />
         <Statistics title="Upload stats" stats={data} />
       </Container>
-    </>
+    </ThemeProvider>
   );
 }
