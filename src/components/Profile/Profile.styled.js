@@ -6,7 +6,7 @@ export const ProfileContainer = styled.div`
   border-radius: 4px;
   background-color: #f2f2f2;
   box-shadow: ${({ theme }) => {
-    return theme.boxShadow.shadow;
+    return theme.shadow;
   }};
 `;
 

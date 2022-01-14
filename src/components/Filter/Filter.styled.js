@@ -7,11 +7,26 @@ export const TriggerButton = styled.button`
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  padding: 8px 12px;
+  padding: ${props => props.theme.gap(3)};
+  border-radius: ${props => props.theme.gap()};
+  background-color: ${({ theme }) => {
+    return theme.colors.main;
+  }};
+  margin-bottom: ${props => props.theme.gap(3)};
+  transition: color 300ms linear, background-color 300ms linear;
+
+  :hover {
+    background-color: ${({ theme }) => {
+      return theme.colors.bg;
+    }};
+    color: ${({ theme }) => {
+      return theme.colors.main;
+    }};
+  }
 
   > svg {
     display: block;
-    margin-left: 8px;
+    margin-left: ${props => props.theme.gap(2)};
   }
 `;
 
@@ -22,21 +37,21 @@ export const FilterContainer = styled.div`
 
 export const PopoverContainer = styled.div`
   position: absolute;
-  padding: 12px;
+  padding: ${props => props.theme.gap(3)};
   background-color: ${({ theme }) => {
     return theme.colors.bg;
   }};
-  border-radius: 4px;
+  border-radius: ${props => props.theme.gap()};
   color: ${({ theme }) => {
     return theme.colors.main;
   }};
   box-shadow: ${({ theme }) => {
-    return theme.boxShadow.shadow;
+    return theme.shadow;
   }};
 `;
 
 export const Options = styled.div`
-  padding: 8px;
+  padding: ${props => props.theme.gap(2)};
   display: flex;
   flex-direction: column;
   text-align: left;
@@ -50,18 +65,18 @@ export const OptionItem = styled.label`
 
 export const SearchBox = styled.div`
   position: relative;
-  margin-bottom: 16px;
+  margin-bottom: ${props => props.theme.gap(4)};
 
   > svg {
     position: absolute;
     fill: gray;
     top: 50%;
-    right: 4px;
+    right: ${props => props.theme.gap()};
     transform: translateY(-50%);
   }
 `;
 
 export const SearchInput = styled.input`
-  padding: 4px 20px 4px 8px;
+  padding: ${({ theme }) => `${theme.gap()} ${theme.gap(5)} ${theme.gap()} ${theme.gap(2)}`};
   width: 100%;
 `;

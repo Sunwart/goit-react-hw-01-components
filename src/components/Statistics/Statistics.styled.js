@@ -6,7 +6,7 @@ export const StatsContainer = styled.section`
   display: inline-flex;
   flex-direction: column;
   box-shadow: ${({ theme }) => {
-    return theme.boxShadow.shadow;
+    return theme.shadow;
   }};
 `;
 

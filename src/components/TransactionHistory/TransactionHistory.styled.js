@@ -5,7 +5,7 @@ export const Table = styled.table`
   background-color: white;
   color: gray;
   box-shadow: ${({ theme }) => {
-    return theme.boxShadow.shadow;
+    return theme.shadow;
   }};
 
   thead {

@@ -5,7 +5,7 @@ export const Friend = styled.li`
   display: flex;
   margin-bottom: 8px;
   box-shadow: ${({ theme }) => {
-    return theme.boxShadow.shadow;
+    return theme.shadow;
   }};
   align-items: center;
   border-radius: 4px;
