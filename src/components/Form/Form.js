@@ -7,6 +7,7 @@ const INITIAL_STATE = {
   agreed: false,
   gender: null,
   age: '',
+  level: '1st',
 };
 
 const Gender = {
@@ -19,19 +20,14 @@ class Form extends Component {
 
   handleChange = evt => {
     const { name, value, type, checked } = evt.target;
-
-    if (type !== 'checkbox') {
-      this.setState({ [name]: value });
-    } else {
-      this.setState({ agreed: checked });
-    }
+    this.setState({ [name]: type === 'checkbox' ? checked : value });
   };
 
   handleSubmit = evt => {
     evt.preventDefault();
-    const { login, email, password, agreed, gender, age } = this.state;
+    const { login, email, password, agreed, gender, age, level } = this.state;
     console.log(
-      `Login: ${login}, Email: ${email}, Password: ${password}, Agreed: ${agreed}, Gender: ${gender}, Age: ${age}`,
+      `Login: ${login}, Email: ${email}, Password: ${password}, Agreed: ${agreed}, Gender: ${gender}, Age: ${age}, Level: ${level}`,
     );
     this.props.onSubmit({ ...this.state });
     this.reset();
@@ -42,10 +38,43 @@ class Form extends Component {
   };
 
   render() {
-    const { login, email, password, agreed, gender, age } = this.state;
+    const { login, email, password, agreed, gender, age, level } = this.state;
 
     return (
       <form onSubmit={this.handleSubmit}>
+        <section>
+          <p>Your level</p>
+          <label>
+            <input
+              type="radio"
+              name="level"
+              value="1st"
+              onChange={this.handleChange}
+              checked={level === '1st'}
+            />
+            1st
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="level"
+              value="2nd"
+              onChange={this.handleChange}
+              checked={level === '2nd'}
+            />
+            2nd
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="level"
+              value="3rd"
+              onChange={this.handleChange}
+              checked={level === '3rd'}
+            />
+            3rd
+          </label>
+        </section>
         <section>
           <p>Choose your gender</p>
           <label>
@@ -121,7 +150,7 @@ class Form extends Component {
         <br />
         <label>
           Agree to terms
-          <input type="checkbox" checked={agreed} onChange={this.handleChange} />
+          <input type="checkbox" name="agreed" checked={agreed} onChange={this.handleChange} />
         </label>
         <br />
         <button type="submit" disabled={!agreed}>

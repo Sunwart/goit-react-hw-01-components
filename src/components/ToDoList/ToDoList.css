@@ -1,7 +1,11 @@
 .ListContainer {
-  width: 400px;
+  width: 50%;
   margin: 0 auto;
-  margin-bottom: 24px;
+  background-color: white;
+  padding: 16px;
+  border-radius: 4px;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px,
+    rgba(17, 17, 26, 0.1) 0px 16px 56px;
 }
 
 .ListItem {
@@ -11,4 +15,8 @@
 
 .closeBtn {
   margin-right: 16px;
+}
+
+.ListItem--completed {
+  text-decoration: line-through;
 }

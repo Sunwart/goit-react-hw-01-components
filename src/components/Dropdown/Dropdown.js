@@ -2,7 +2,7 @@ import { Component } from 'react';
 import './Dropdown.css';
 
 import ColorPicker from '../ColorPicker';
-import { colorPickerOptions } from '../../App';
+import { colorPickerOptions } from '../data/colorPickerOptions';
 
 class Dropdown extends Component {
   state = { visible: true };
