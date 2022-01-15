@@ -38,6 +38,7 @@ li {
 button {
   background-color: lightblue;
   margin: 8px;
-  padding: 4px;
+  padding: 8px;
   border: none;
+  border-radius: 4px;
 }

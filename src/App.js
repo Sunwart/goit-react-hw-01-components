@@ -17,27 +17,36 @@ import { Filter } from './components/Filter/Filter';
 import { ThemeProvider } from 'styled-components';
 import { theme } from './components/data/theme';
 
+import Dropdown from './components/Dropdown';
+import Counter from './components/Counter';
+
+import ShowTime from './components/ShowTime/ShowTime';
+
+import ToDoList from './components/ToDoList';
+
+export const colorPickerOptions = [
+  { value: '#ff0000', label: 'red' },
+  { value: '#ff8000', label: 'orange' },
+  { value: '#ffff00', label: 'yellow' },
+  { value: '#80ff00', label: 'chartreuse' },
+  { value: '#00ff00', label: 'green' },
+  { value: '#00ff80', label: 'spring green' },
+  { value: '#00ffff', label: 'cyan' },
+  { value: '#0080ff', label: 'dodger blue' },
+  { value: '#0000ff', label: 'blue' },
+  { value: '#8000ff', label: 'purple' },
+  { value: '#ff00ff', label: 'violet' },
+  { value: '#ff0080', label: 'magenta' },
+];
+
 export default function App() {
   return (
     <ThemeProvider theme={theme}>
-      <Filter
-        isOpen
-        searchable
-        options={[
-          { value: 'ff0000', label: 'red' },
-          { value: 'ff8000', label: 'orange' },
-          { value: 'ffff00', label: 'yellow' },
-          { value: '80ff00', label: 'chartreuse' },
-          { value: '00ff00', label: 'green' },
-          { value: '00ff80', label: 'spring green' },
-          { value: '00ffff', label: 'cyan' },
-          { value: '0080ff', label: 'dodger blue' },
-          { value: '0000ff', label: 'blue' },
-          { value: '8000ff', label: 'purple' },
-          { value: 'ff00ff', label: 'violet' },
-          { value: 'ff0080', label: 'magenta' },
-        ]}
-      />
+      <ToDoList />
+      <Dropdown />
+      <Counter step={5} initialValue={20} />
+      <ShowTime />
+      <Filter isOpen searchable options={colorPickerOptions} />
       <Container>
         <Profile
           username={user.username}

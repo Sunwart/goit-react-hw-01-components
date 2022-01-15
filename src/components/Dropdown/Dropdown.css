@@ -1,0 +1,7 @@
+.Dropdown {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 400px;
+  padding: 20px;
+}

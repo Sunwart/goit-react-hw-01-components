@@ -32,7 +32,7 @@ export const Filter = ({ isOpen = false, searchable = false, options }) => {
           )}
           <Options>
             {options.map(({ value, label }) => (
-              <OptionItem key={value}>
+              <OptionItem key={label}>
                 <input type="checkbox" name="option" value={value} />
                 {label}
               </OptionItem>
