@@ -26,6 +26,8 @@ import ShowTime from './components/ShowTime/ShowTime';
 
 import ToDoList from './components/ToDoList';
 
+import Form from './components/Form';
+
 export const colorPickerOptions = [
   { value: '#ff0000', label: 'red' },
   { value: '#ff8000', label: 'orange' },
@@ -68,15 +70,21 @@ class App extends Component {
 
     return (
       <ThemeProvider theme={theme}>
-        <div>
-          <p>Total number of tasks: {todos.length}</p>
-          <p>Number of completed tasks: {completedTodosNumber}</p>
-        </div>
-        <ToDoList todos={todos} onDeleteTodo={this.deleteTodo} />
-        <Dropdown />
+        <Container>
+          <Form onSubmit={values => console.log(values)} />
+          <Dropdown />
+          <Filter isOpen searchable options={colorPickerOptions} />
+        </Container>
+        <>
+          <ToDoList todos={todos} onDeleteTodo={this.deleteTodo} />
+          <div>
+            <p>Total number of tasks: {todos.length}</p>
+            <p>Number of completed tasks: {completedTodosNumber}</p>
+          </div>
+        </>
         <Counter step={5} initialValue={20} />
         <ShowTime />
-        <Filter isOpen searchable options={colorPickerOptions} />
+
         <Container>
           <Profile
             username={user.username}

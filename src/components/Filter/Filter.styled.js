@@ -31,7 +31,9 @@ export const TriggerButton = styled.button`
 `;
 
 export const FilterContainer = styled.div`
-  position: relative;
+  position: absolute;
+  top: 5%;
+  right: 5%;
   text-align: left;
 `;
 
@@ -57,6 +59,7 @@ export const Options = styled.div`
   text-align: left;
   max-height: 150px;
   overflow-y: auto;
+  white-space: nowrap;
 `;
 
 export const OptionItem = styled.label`
