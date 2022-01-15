@@ -1,0 +1,14 @@
+.ListContainer {
+  width: 400px;
+  margin: 0 auto;
+  margin-bottom: 24px;
+}
+
+.ListItem {
+  display: flex;
+  align-items: center;
+}
+
+.closeBtn {
+  margin-right: 16px;
+}

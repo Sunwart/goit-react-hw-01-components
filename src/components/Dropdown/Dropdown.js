@@ -5,7 +5,7 @@ import ColorPicker from '../ColorPicker';
 import { colorPickerOptions } from '../../App';
 
 class Dropdown extends Component {
-  state = { visible: false };
+  state = { visible: true };
 
   toggle = () => {
     this.setState(prevState => ({
