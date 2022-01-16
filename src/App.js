@@ -28,9 +28,12 @@ import Form from './components/Form';
 
 import { colorPickerOptions } from './components/data/colorPickerOptions';
 
+import FormikForm from './components/FormikFrom/FormikForm';
+
 const App = props => {
   return (
     <ThemeProvider theme={theme}>
+      <FormikForm onSubmit={x => console.log(x)} />
       <Container>
         <Form onSubmit={values => console.log(values)} />
         <Dropdown />
