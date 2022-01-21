@@ -7,16 +7,8 @@ import FilterTasks from './FilterTasks';
 
 class ToDoListSection extends Component {
   state = {
-    filter: 'some',
-    todos: [
-      { id: 'id-1', text: 'ToDo 1 ToDo 1 ToDo 1 ToDo 1 ToDo 1', completed: false },
-      {
-        id: 'id-2',
-        text: 'ToDo 2 ToDo 2 ToDo 2 ToDo 2 ToDo 2 ToDo 2 ToDo 2 ToDo 2 ToDo 2 ToDo 2 ToDo 2 ToDo 2 ',
-        completed: false,
-      },
-      { id: 'id-3', text: 'ToDo 3 ToDo 3 ToDo 3 ToDo 3 ', completed: true },
-    ],
+    filter: '',
+    todos: [],
   };
 
   deleteTodo = todoId => {
@@ -35,9 +27,10 @@ class ToDoListSection extends Component {
   };
 
   addTodo = text => {
-    console.log(text);
-    const todo = { id: shortid.generate(), text, completed: false };
-    this.setState(({ todos }) => ({ todos: [todo, ...todos] }));
+    if (text.trim() !== '') {
+      const todo = { id: shortid.generate(), text, completed: false };
+      this.setState(({ todos }) => ({ todos: [todo, ...todos] }));
+    }
   };
 
   changeFilter = e => {
@@ -54,6 +47,30 @@ class ToDoListSection extends Component {
     const { todos } = this.state;
     return todos.reduce((total, todo) => (todo.completed ? total + 1 : total), 0);
   };
+
+  componentDidUpdate(prevState) {
+    console.log('Component upd');
+    if (this.state.todos !== prevState.todos) {
+      console.log('Tasks updated');
+      localStorage.setItem('todos', JSON.stringify(this.state.todos));
+    }
+  }
+
+  componentDidMount() {
+    const todos = JSON.parse(localStorage.getItem('todos'));
+    if (todos) {
+      this.setState({ todos: todos });
+    } else {
+      this.setState({
+        todos: [
+          { id: 'id1', text: 'something good' },
+          { id: 'id2', text: 'something cool' },
+          { id: 'id3', text: 'something for fun' },
+          { id: 'id4', text: 'something weird' },
+        ],
+      });
+    }
+  }
 
   render() {
     const { todos, filter } = this.state;

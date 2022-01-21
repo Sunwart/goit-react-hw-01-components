@@ -11,24 +11,27 @@ const validationSchema = Yup.object({
 
 const FormikForm = ({ onSubmit }) => {
   return (
-    <Formik
-      initialValues={{ email: '', password: '' }}
-      validationSchema={validationSchema}
-      onSubmit={async (values, { setSubmitting }) => {
-        onSubmit(values);
-        setSubmitting(false);
-      }}
-    >
-      <Form autoComplete="off">
-        <Field type="email" name="email" />
-        <ErrorMessage name="email" />
-        <br />
-        <Field type="password" name="password" />
-        <ErrorMessage name="password" />
-        <br />
-        <button type="submit">Submit</button>
-      </Form>
-    </Formik>
+    <>
+      <h2>Formik FORM</h2>
+      <Formik
+        initialValues={{ email: '', password: '' }}
+        validationSchema={validationSchema}
+        onSubmit={async (values, { setSubmitting }) => {
+          onSubmit(values);
+          setSubmitting(false);
+        }}
+      >
+        <Form autoComplete="off">
+          <Field type="email" name="email" />
+          <ErrorMessage name="email" />
+          <br />
+          <Field type="password" name="password" />
+          <ErrorMessage name="password" />
+          <br />
+          <button type="submit">Submit</button>
+        </Form>
+      </Formik>
+    </>
   );
 };
 
