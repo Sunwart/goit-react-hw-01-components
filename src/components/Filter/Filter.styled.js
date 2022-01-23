@@ -9,19 +9,9 @@ export const TriggerButton = styled.button`
   align-items: center;
   padding: ${props => props.theme.gap(3)};
   border-radius: ${props => props.theme.gap()};
-  background-color: ${({ theme }) => {
-    return theme.colors.main;
-  }};
   margin-bottom: ${props => props.theme.gap(3)};
   transition: color 300ms linear, background-color 300ms linear;
 
-  :hover {
-    background-color: ${({ theme }) => {
-      return theme.colors.bg;
-    }};
-    color: ${({ theme }) => {
-      return theme.colors.main;
-    }};
   }
 
   > svg {

@@ -20,3 +20,8 @@
 .ListItem--completed {
   text-decoration: line-through;
 }
+
+textarea {
+  margin: 54px 0 0 0;
+  border-color: purple;
+}

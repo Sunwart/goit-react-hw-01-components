@@ -4,12 +4,41 @@ import ToDoList from './ToDoList';
 import AddTask from './AddTask';
 import shortid from 'shortid';
 import FilterTasks from './FilterTasks';
+import Modal from '../Modal/Modal';
+
+import { ReactComponent as PlusIcon } from '../icons/plus.svg';
+import IconButton from '../IconButton/IconButton';
 
 class ToDoListSection extends Component {
   state = {
     filter: '',
     todos: [],
+    showModal: false,
   };
+
+  componentDidUpdate(prevState) {
+    const nextTodos = this.state.todos;
+    const prevTodos = prevState.todos;
+    if (nextTodos !== prevTodos) {
+      localStorage.setItem('todos', JSON.stringify(this.state.todos));
+    }
+  }
+
+  componentDidMount() {
+    const todos = JSON.parse(localStorage.getItem('todos'));
+    if (todos) {
+      this.setState({ todos: todos });
+    } else {
+      this.setState({
+        todos: [
+          { id: 'id1', text: 'something good' },
+          { id: 'id2', text: 'something cool' },
+          { id: 'id3', text: 'something for fun' },
+          { id: 'id4', text: 'something weird' },
+        ],
+      });
+    }
+  }
 
   deleteTodo = todoId => {
     this.setState(prevState => ({ todos: prevState.todos.filter(todo => todo.id !== todoId) }));
@@ -31,6 +60,7 @@ class ToDoListSection extends Component {
       const todo = { id: shortid.generate(), text, completed: false };
       this.setState(({ todos }) => ({ todos: [todo, ...todos] }));
     }
+    this.toggleModal();
   };
 
   changeFilter = e => {
@@ -48,40 +78,31 @@ class ToDoListSection extends Component {
     return todos.reduce((total, todo) => (todo.completed ? total + 1 : total), 0);
   };
 
-  componentDidUpdate(prevState) {
-    console.log('Component upd');
-    if (this.state.todos !== prevState.todos) {
-      console.log('Tasks updated');
-      localStorage.setItem('todos', JSON.stringify(this.state.todos));
-    }
-  }
-
-  componentDidMount() {
-    const todos = JSON.parse(localStorage.getItem('todos'));
-    if (todos) {
-      this.setState({ todos: todos });
-    } else {
-      this.setState({
-        todos: [
-          { id: 'id1', text: 'something good' },
-          { id: 'id2', text: 'something cool' },
-          { id: 'id3', text: 'something for fun' },
-          { id: 'id4', text: 'something weird' },
-        ],
-      });
-    }
-  }
+  toggleModal = () => {
+    this.setState(({ showModal }) => ({ showModal: !showModal }));
+  };
 
   render() {
-    const { todos, filter } = this.state;
+    const { todos, filter, showModal } = this.state;
     const completedTodosNumber = this.calcCompletedTasks();
 
     const visibleTodos = this.getVisibleTodos();
 
     return (
       <section className="ListContainer">
+        <IconButton onClick={this.toggleModal} aria-label={'Add ToDo task'}>
+          <PlusIcon fill="white" />
+        </IconButton>
+
+        {showModal && (
+          <Modal onClose={this.toggleModal}>
+            <AddTask onSubmit={this.addTodo} />
+            <button type="submit" onClick={this.toggleModal}>
+              CLOSE MODAL
+            </button>
+          </Modal>
+        )}
         <h2>TO DO LIST</h2>
-        <AddTask onSubmit={this.addTodo} />
         <ToDoList
           todos={visibleTodos}
           onDeleteTodo={this.deleteTodo}

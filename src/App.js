@@ -20,30 +20,42 @@ import { theme } from './components/data/theme';
 import Dropdown from './components/Dropdown';
 import Counter from './components/Counter';
 
-import ShowTime from './components/ShowTime/ShowTime';
-
 import ToDoListSection from './components/ToDoList';
 
 import Form from './components/Form';
 
 import { colorPickerOptions } from './components/data/colorPickerOptions';
 
-import FormikForm from './components/FormikFrom/FormikForm';
+import Tabs from './components/Tabs/Tabs';
+import tabs from './components/data/tabs.json';
+import { Example1 } from './components/VideoList/Example1';
 
-const App = props => {
+import { Reader } from './components/Reader/Reader';
+import publications from './components/data/publications.json';
+import { News } from './components/News/News';
+import Pokemon from './components/Pokemon/Pokemon';
+
+const App = () => {
   return (
     <ThemeProvider theme={theme}>
-      <FormikForm onSubmit={x => console.log(x)} />
+      <h1>REACT PRACTICE</h1>
+      <Pokemon />
+      <News />
+      <Reader items={publications} />
+      <Example1 />
+
+      <Tabs items={tabs} />
+      <ToDoListSection />
+      <br />
+      <h2>Simple FORM</h2>
       <Container>
         <Form onSubmit={values => console.log(values)} />
         <Dropdown />
         <Filter isOpen searchable options={colorPickerOptions} />
       </Container>
-      <ToDoListSection />
       <Container>
         <Counter step={5} initialValue={20} />
       </Container>
-      <ShowTime />
       <Container>
         <Profile
           username={user.username}

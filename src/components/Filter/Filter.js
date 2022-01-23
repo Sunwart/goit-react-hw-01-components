@@ -15,14 +15,14 @@ import { FaChevronDown } from 'react-icons/fa';
 import { HiX } from 'react-icons/hi';
 import { useState } from 'react';
 
-export const Filter = ({ isOpen = false, searchable = false, options }) => {
+export const Filter = ({ isOpen = true, searchable = false, options }) => {
   const [isProperOpen, setIsProperOpen] = useState(isOpen);
   return (
     <FilterContainer>
       <TriggerButton type="button" onClick={() => setIsProperOpen(state => !state)}>
         Selected: 0<FaChevronDown />
       </TriggerButton>
-      {isProperOpen && (
+      {!isProperOpen && (
         <PopoverContainer>
           {searchable && (
             <SearchBox>
