@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { getPublications } from '../../services/publications-api';
+import { getPublications, deletePublication } from '../../services/publications-api';
 
 export class Reader extends Component {
   state = {
@@ -17,8 +17,26 @@ export class Reader extends Component {
       console.log(error); // див. Покемони
     }
   }
+
   changeIndex = value => {
     this.setState(prevState => ({ index: prevState.index + value }));
+  };
+
+  deleteItem = async () => {
+    const { index, items } = this.state;
+    const currentItem = items[index];
+    try {
+      await deletePublication(currentItem.id);
+
+      this.setState(prevState => {
+        const checkLast = prevState.index + 1 === prevState.items.length ? true : false;
+
+        return {
+          items: prevState.items.filter(item => item.id !== currentItem.id),
+          index: checkLast ? prevState.index - 1 : prevState.index,
+        };
+      });
+    } catch (error) {}
   };
 
   render() {
@@ -50,6 +68,9 @@ export class Reader extends Component {
               <article>
                 <h2>{currentItem.title}</h2>
                 <p>{currentItem.text} </p>
+                <button type="button" onClick={this.deleteItem}>
+                  Remove article
+                </button>
               </article>
             )}
           </>

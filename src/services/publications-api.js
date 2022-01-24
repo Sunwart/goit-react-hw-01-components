@@ -8,6 +8,11 @@ export const getPublications = async () => {
 };
 
 export const createPublication = async data => {
-  const response = await axios.post('/publications ', data);
+  const response = await axios.post('/publications', data);
+  return response.data;
+};
+
+export const deletePublication = async id => {
+  const response = await axios.delete(`/publications/${id}`);
   return response.data;
 };
