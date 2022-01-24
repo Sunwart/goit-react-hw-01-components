@@ -55,7 +55,7 @@ class App extends Component {
       <ThemeProvider theme={theme}>
         <h1>REACT PRACTICE</h1>
         <div>
-          <CreateArticle />{' '}
+          <CreateArticle />
           <button type="button" onClick={this.toggleModal} aria-label={'Add ToDo task'}>
             Show articles
           </button>
