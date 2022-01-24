@@ -28,22 +28,27 @@ import { colorPickerOptions } from './components/data/colorPickerOptions';
 
 import Tabs from './components/Tabs/Tabs';
 import tabs from './components/data/tabs.json';
-import { Example1 } from './components/VideoList/Example1';
+import { Videos } from './components/VideoList/Videos';
 
-import { Reader } from './components/Reader/Reader';
-import publications from './components/data/publications.json';
 import { News } from './components/News/News';
 import Pokemon from './components/Pokemon/Pokemon';
+
+import { Reader } from './components/Reader/Reader';
+import { CreateArticle } from './components/Reader/CreateArticle';
 
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <h1>REACT PRACTICE</h1>
+      <div>
+        <CreateArticle />
+        <Reader />
+      </div>
+      <br />
+      <h2>POKEMONS</h2>
       <Pokemon />
       <News />
-      <Reader items={publications} />
-      <Example1 />
-
+      <Videos />
       <Tabs items={tabs} />
       <ToDoListSection />
       <br />
